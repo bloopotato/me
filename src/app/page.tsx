@@ -1,7 +1,12 @@
-export default function Home() {
+import React from "react";
+
+const Page = () => {
   return (
-    <div className="w-screen h-screen overflow-hidden flex items-center justify-center bg-[#efe2ba]">
-      <p className="text-[80px] text-[#d79922]">theres nothing here 😨</p>
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-background text-foreground transition-theme">
+      
+      <p className="text-[64px] text-navA">Theres nothing here 😨</p>
     </div>
   );
-}
+};
+
+export default Page;

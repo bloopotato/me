@@ -1,26 +1,137 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F2F2F2;
+  --foreground: #3e362e;
+
+  --title: #F13C20;
+  --gold: #D79922;
+  --blue: #4056A1;
+  --light-blue: #C5CBE3;
+
+  --nav-text: #4056A1;
+  --nav-active: #121146;
+}
+
+html.dark {
+  --background: #070F2B;
+  --foreground: #9290C3;
+
+  --title: #C5CBE3;
+  --gold: #03C988;
+  --blue: #D4ADFC;
+  --light-blue: #535C91;
+
+  --nav-text: #9290C3;
+  --nav-active: #C5CBE3;
 }
 
 @theme inline {
+  --font-ubuntu: 'Ubuntu Mono', monospace;
+  --font-consolas: 'Consolas', monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navT: var(--nav-text);
+  --color-navA: var(--nav-active);
+  --color-title: var(--title);
+  --color-colour1: var(--gold);
+  --color-colour2: var(--blue);
+  --color-colour3: var(--light-blue);
+
+  --boxshadow-bs1: 0 0 40px 40px var(--gold);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  
+}
+
+@font-face {
+  font-family: 'Consolas';
+  src: url('/fonts/Consolas.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.transition-theme {
+  transition: background-color 0.3s ease-in-out;
+}
+
+@keyframes blockInOut {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  60% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-blockInOut {
+  animation: blockInOut 1.5s ease forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8) translateY(10px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(2) translateY(-5px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+
+.animate-popIn {
+  animation: popIn 0.8s ease-in-out;
+}
+
+.animate-btn {
+  background: linear-gradient(to right, var(--blue) 50%, var(--background) 50%);
+  background-position:  right bottom;
+  background-size: 200% 100%;
+  transition: all 0.4s ease-out;
+}
+
+.animate-btn:hover,
+.animate-btn:focus {
+  background-position: left bottom;
+  color: var(--background);
+}
+
+@keyframes spinfast {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spinfast:hover {
+  animation: spinfast 0.5s linear infinite;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--background);
 }
